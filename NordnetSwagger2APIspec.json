@@ -1,0 +1,4762 @@
+
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2",
+    "title": "Nordnet External API - HTTP requests",
+    "description": "This documentation describes the HTTP requests of nExt. Please login above to be able to test the http requests. Please note that this is a test environment. There is no access here to the real production data"
+  },
+  "paths": {
+    "/next/2/accounts": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Account"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "403": {
+            "description": "User is logged in but user or system does not have priviliges to use this endpoint"
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Get user accounts",
+        "operationId": "get_accounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/accounts/{accno}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/AccountInfo"
+            }
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "403": {
+            "description": "User is logged in but user or system does not have priviliges to use this endpoint"
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Get account summary",
+        "operationId": "get_account",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The account number of the account to use",
+            "name": "accno",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/accounts/{accno}/ledgers": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/LedgerInformation"
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "403": {
+            "description": "User is logged in but user or system does not have priviliges to use this endpoint"
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Get account ledgers",
+        "operationId": "get_ledgers",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The account number of the account to use",
+            "name": "accno",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/accounts/{accno}/orders": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Order"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "403": {
+            "description": "User is logged in but user or system does not have priviliges to use this endpoint"
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Get orders",
+        "operationId": "get_orders",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The account number of the account to use",
+            "name": "accno",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "Include orders deleted today",
+            "name": "deleted",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/OrderReply"
+            }
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "403": {
+            "description": "User is logged in but user or system does not have priviliges to use this endpoint"
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Enter order",
+        "operationId": "create_order",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The account number of the account to use",
+            "name": "accno",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "formData",
+            "description": "Nordnet tradable identifier",
+            "name": "identifier",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "description": "Nordnet market identifier",
+            "name": "market_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "formData",
+            "description": "The price limit of the order",
+            "name": "price",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "in": "formData",
+            "description": "The currency that the instrument is traded in",
+            "name": "currency",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "description": "The volume of the order",
+            "name": "volume",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "formData",
+            "description": "BUY or SELL",
+            "name": "side",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "description": "NORMAL is the default if order_type is left out, when using NORMAL the system guess the order type based on used parameters. In order to get better parameter validation and to ensure that the order type is the desired the client should not use NORMAL, please user the intended order type. NORMAL will be deprecated in future versions",
+            "name": "order_type",
+            "required": false,
+            "type": "string",
+            "default": "NORMAL"
+          },
+          {
+            "in": "formData",
+            "description": "Date on format YYYY-MM-DD, if left out the order is a day order - same behavior as if valid_date should be set to today. Smart-orders can only be day orders",
+            "name": "valid_until",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "description": "The visible part of an iceberg order. If left out the whole volume of the order is visible on the market. This field is only allowed if the order type is LIMIT or NORMAL",
+            "name": "open_volume",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "formData",
+            "description": "Free text reference for the order. Intended for the end user",
+            "name": "reference",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "description": "Used for stop loss orders.<br>&nbsp;STOP_ACTPRICE_PERC - Trailing stop loss. The order is activated when the price changes by percent. The fields target_value, trigger_value and trigger_condition is required and the price field should not be set<br>&nbsp;STOP_ACTPRICE - The order is activated when the market price of the instrument reaches a trigger price. The fields trigger_value, trigger_condition and price is required<br>&nbsp;MANUAL - The order is inactive in the Nordne system until it is manually activated by a user<BR>&nbsp;OCO_STOP_ACTPRICE - One cancels other orders - Our implementation is one normal order and one stop loss order. If the real order is executed the stop loss is cancelled. If the stop loss triggers the normal order is canceled. This combo is always displayed as 1 order",
+            "name": "activation_condition",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "description": "If type is STOP_ACTPRICE_PERC the value is the given in percent. Minimum value is 1 for STOP_ACTPRICE_PERC. If type is STOP_ACTPRICE the value is a fixed price",
+            "name": "trigger_value",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "in": "formData",
+            "description": "The comparision that should be used on trigger_value &lt;= or &gt;=",
+            "name": "trigger_condition",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "description": "Only used when type is STOP_ACTPRICE_PERC or OCO_STOP_ACTPRICE. This is the price on the market.If type is STOP_ACTPRICE_PERC the value is given in percent. The price will be trailing_value + (target_value% of trailing_value). If type is OCO_STOP_ACTPRICE the price is a fixed price",
+            "name": "target_value",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/accounts/{accno}/orders/{order_id}/activate": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/OrderReply"
+            }
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "403": {
+            "description": "User is logged in but user or system does not have priviliges to use this endpoint"
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Activate an order",
+        "operationId": "order_activation",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The account in use",
+            "name": "accno",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "description": "The order to modify",
+            "name": "order_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/accounts/{accno}/orders/{order_id}": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/OrderReply"
+            }
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "403": {
+            "description": "User is logged in but user or system does not have priviliges to use this endpoint"
+          },
+          "404": {
+            "description": "Order not found",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Modify an order",
+        "operationId": "modify_order",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The account number of the account to use",
+            "name": "accno",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "description": "The order to modify",
+            "name": "order_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "The new volume",
+            "name": "volume",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "The new price. If left out the price is not changed",
+            "name": "price",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "description": "The currency of the instrument. Needed when the price is changed",
+            "name": "currency",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/OrderReply"
+            }
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "403": {
+            "description": "User is logged in but user or system does not have priviliges to use this endpoint"
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Delete an order",
+        "operationId": "delete_order",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The account number of the account to use",
+            "name": "accno",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "description": "The order to delete",
+            "name": "order_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/accounts/{accno}/positions": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Position"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "403": {
+            "description": "User is logged in but user or system does not have priviliges to use this endpoint"
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Get account positions",
+        "operationId": "get_positions",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The account number of the account to use",
+            "name": "accno",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/accounts/{accno}/trades": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Trade"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "403": {
+            "description": "User is logged in but user or system does not have priviliges to use this endpoint"
+          },
+          "404": {
+            "description": "Account not found",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Get trades",
+        "operationId": "get_trades",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The account to lookup orders for",
+            "name": "accno",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "Number of days to look for trades. Default is 0. 0 means trades from today. Max is 7 days",
+            "name": "days",
+            "required": false,
+            "type": "integer",
+            "default": 0
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/countries": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Country"
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "countries"
+        ],
+        "summary": "Get all countries",
+        "operationId": "get_countries",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/countries/{country}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Country"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "countries"
+        ],
+        "summary": "Get country",
+        "operationId": "get_country",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The country_code to lookup",
+            "name": "country",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/indicators": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Indicator"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "indicators"
+        ],
+        "summary": "Get indicators",
+        "operationId": "get_indicators",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/indicators/{indicator}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Indicator"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "indicators"
+        ],
+        "summary": "Get indicator info",
+        "operationId": "get_indicator",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The indicator on the format [src]:[identifier], comma separate multiple inputs",
+            "name": "indicator",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/instruments": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Instrument"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "instruments"
+        ],
+        "summary": "Instrument search",
+        "operationId": "get_instruments",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "description": "The query string",
+            "name": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Instrument group type to search for. If empty all instrument group types is used. Multiple group types should be comma separated",
+            "name": "instrument_group_type",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "Max number of items in the reply. Max value is 100. Default is 100",
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+            "default": 100
+          },
+          {
+            "in": "query",
+            "description": "Used together with limit to create pagination. This is the first instrument to show. Defaults to 0",
+            "name": "offset",
+            "required": false,
+            "type": "integer",
+            "default": 0
+          },
+          {
+            "in": "query",
+            "description": "To perform a approximate string search, set fuzzy to true",
+            "name": "fuzzy",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/instruments/{instrument_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Instrument"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "instruments"
+        ],
+        "summary": "Get instruments",
+        "operationId": "get_instrument",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The unique instrument id, comma separate multiple inputs",
+            "name": "instrument_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/instruments/{instrument_id}/leverages": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Instrument"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "instruments"
+        ],
+        "summary": "Get leverage instruments",
+        "operationId": "get_leverages",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The instrument id of the underlying instrument",
+            "name": "instrument_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "Show only leverage instruments with a specific expiration date",
+            "name": "expiration_date",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Show only leverage instrumentsm from a specific issuer",
+            "name": "issuer_id",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "Show only leverage instruments with a specific market view",
+            "name": "market_view",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Show only instruments with a specific instrument type",
+            "name": "instrument_type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Show only instruments with a specific instrument group type",
+            "name": "instrument_group_type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Show only leverage instruments with a specific currency",
+            "name": "currency",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/instruments/{instrument_id}/leverages/filters": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/LeverageFilter"
+            }
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "instruments"
+        ],
+        "summary": "Get leverage filters",
+        "operationId": "get_leverage_filters",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The instrument id of the underlying instrument",
+            "name": "instrument_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "Show only leverage instruments with a specific expiration date",
+            "name": "expiration_date",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Show only leverage instruments from a specific issuer",
+            "name": "issuer_id",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "Show only leverage instruments with a specific market view",
+            "name": "market_view",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Show only instruments with a specific instrument type",
+            "name": "instrument_type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Show only instruments with a specific instrument group type",
+            "name": "instrument_group_type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Show only leverage instruments with a specific currency",
+            "name": "currency",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/instruments/{instrument_id}/option_pairs": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OptionPair"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "instruments"
+        ],
+        "summary": "Get option pairs",
+        "operationId": "get_option_pairs",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The instrument id of the underlying instrument",
+            "name": "instrument_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "Show only option pairs instruments with a specific expiration date",
+            "name": "expiration_date",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/instruments/{instrument_id}/option_pairs/filters": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/OptionPairFilter"
+            }
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "instruments"
+        ],
+        "summary": "Get option pair filters",
+        "operationId": "get_option_pair_filters",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The unique instrument id, comma separate multiple inputs",
+            "name": "instrument_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "Show only leverage instruments with a specific expiration date",
+            "name": "expiration_date",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/instruments/lookup/{lookup_type}/{lookup}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Instrument"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "instruments"
+        ],
+        "summary": "Instrument lookup",
+        "operationId": "get_instrument_lookup",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The lookup type to use",
+            "name": "lookup_type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "description": "If lookup_type is market_id_identifier the lookup must be on the format [market_id]:[identifier], if lookup_type is isin_code_currency_market_id the lookup format is [isin]:[currency]:[market_id]",
+            "name": "lookup",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/instruments/sectors": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Sector"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "instruments"
+        ],
+        "summary": "Get instrument sectors",
+        "operationId": "get_instrument_sectors",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "description": "Filter result on specified groups",
+            "name": "group",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/instruments/sectors/{sector}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Sector"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "instruments"
+        ],
+        "summary": "Get instrument sector",
+        "operationId": "get_instrument_sector",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The sector or sectors to lookup, comma separate multiple inputs",
+            "name": "sector",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/instruments/types": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InstrumentType"
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "instruments"
+        ],
+        "summary": "Get all instrument types",
+        "operationId": "get_instrument_types",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/instruments/types/{instrument_type}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InstrumentType"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "instruments"
+        ],
+        "summary": "Get instrument type",
+        "operationId": "get_instrument_type",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The instrument type or types to lookup. Comma separate multiple inputs",
+            "name": "instrument_type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/instruments/underlyings/{derivative_type}/{currency}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Instrument"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "instruments"
+        ],
+        "summary": "Get underlyings",
+        "operationId": "get_underlying",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "Chooses which instrument type to find underlyings for",
+            "name": "derivative_type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "description": "The currency of the derivative. Please note that the underlying can have a different currency",
+            "name": "currency",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/lists": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/List"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "lists"
+        ],
+        "summary": "Get all instrument lists",
+        "operationId": "get_lists",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/lists/{list_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Instrument"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "lists"
+        ],
+        "summary": "Get all instruments in a list",
+        "operationId": "get_list",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The unique id of the list",
+            "name": "list_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/login": {
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/LoggedInStatus"
+            }
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "login"
+        ],
+        "summary": "Delete session (logout)",
+        "operationId": "logout",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Not allowed to login with the credentials",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "login"
+        ],
+        "summary": "Create session (login)",
+        "operationId": "login",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "description": "The authorization blob created above.",
+            "name": "auth",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "description": "The service name (provided by Nordnet).",
+            "name": "service",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/LoggedInStatus"
+            }
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "login"
+        ],
+        "summary": "Touch session",
+        "operationId": "touch_session",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/markets": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Market"
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "markets"
+        ],
+        "summary": "Get all markets",
+        "operationId": "get_markets",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/markets/{market_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Market"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "markets"
+        ],
+        "summary": "Get market",
+        "operationId": "get_market",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The market id to lookup. Comma separate multiple inputs",
+            "name": "market_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/news": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NewsPreview"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "news"
+        ],
+        "summary": "News search",
+        "operationId": "get_news",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "description": "The search string. If not given all news items in the interval is returned (the result can be truncated by count)",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Only news belonging to the given instrument_id is returned. Comma separate multiple inputs, if empty news for all instruments is returned",
+            "name": "instrument_id",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "How far back in time the search should be done. 0 means today. If empty all news is searched and the response is limited by the limit",
+            "name": "days",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "Filter news on language (sv, en and so on), comma separate multiple languages",
+            "name": "news_lang",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Filter news on country (SE, US and so on), comma separate multiple countries",
+            "name": "news_country",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Filter news on market_id, comma separate multiple markets",
+            "name": "market_id",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "Max number of items in the reply. Max value is 100. Default is 100. If more news items is required multiple requests with offset should be done",
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+            "default": 100
+          },
+          {
+            "in": "query",
+            "description": "Used together with limit to create pagination. This is the first news item to show. Defaults to 0",
+            "name": "offset",
+            "required": false,
+            "type": "integer",
+            "default": 0
+          },
+          {
+            "in": "query",
+            "description": "Specify one or more sources to use, separate with comma. If empty all available sources is used.",
+            "name": "source_id",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/news/{item_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NewsItem"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "news"
+        ],
+        "summary": "Get news item",
+        "operationId": "get_news_item",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The news item to lookup. Comma separate multiple lookups",
+            "name": "item_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/news_sources": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NewsSource"
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "news_sources"
+        ],
+        "summary": "Get news sources",
+        "operationId": "get_news_sources",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/realtime_access": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RealtimeAccess"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "realtime_access"
+        ],
+        "summary": "Get realtime access",
+        "operationId": "get_realtime_access",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "system"
+        ],
+        "summary": "Get system status info",
+        "operationId": "get_status",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/tick_sizes": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TicksizeTable"
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "tick_sizes"
+        ],
+        "summary": "Get all ticksize tables",
+        "operationId": "get_ticksizes",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/tick_sizes/{tick_size_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TicksizeTable"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "tick_sizes"
+        ],
+        "summary": "Get ticksize tables",
+        "operationId": "get_ticksize",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "The ticksize table to lookup.",
+            "name": "tick_size_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/tradables/info/{tradables}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TradableInfo"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "tradables"
+        ],
+        "summary": "Get tradable info",
+        "operationId": "get_tradable_info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "[market_id]:[identifier] of the tradable. Example 11:101 for ERIC B, comma separate multiple inputs",
+            "name": "tradables",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/tradables/intraday/{tradables}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/IntradayGraph"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "tradables"
+        ],
+        "summary": "Get intraday prices",
+        "operationId": "get_intraday_graph",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "[market_id]:[identifier] of the tradable. Example 11:101 for ERIC B, comma separate multiple inputs",
+            "name": "tradables",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/next/2/tradables/trades/{tradables}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PublicTrades"
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid parameter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "401": {
+            "description": "Invalid session",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            }  
+          },
+          "429": {
+            "description": "Too Many Requests, please wait for 10 seconds before trying again"
+          }
+        },
+        "description": "",
+        "tags": [
+          "tradables"
+        ],
+        "summary": "Get todays public trades",
+        "operationId": "get_public_trades",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "description": "[market_id]:[identifier] of the tradable. Example 11:101 for ERIC B, comma separate multiple inputs",
+            "name": "tradables",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Number of trades to receive. Integer value or \"all\". Defaults to 5",
+            "name": "count",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Language prefered in the response. Note: nb and nn will return the same as no",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "description": "Basic auth. The session_id should be sent as both username and password",
+            "name": "Authorization",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "system",
+      "description": "System queries"
+    },
+    {
+      "name": "accounts",
+      "description": "Customer account operations"
+    },
+    {
+      "name": "countries",
+      "description": "Country queries"
+    },
+    {
+      "name": "indicators",
+      "description": "Indicator queries"
+    },
+    {
+      "name": "instruments",
+      "description": "Instrument queries"
+    },
+    {
+      "name": "lists",
+      "description": "Instrument lists queries"
+    },
+    {
+      "name": "login",
+      "description": "User session operations"
+    },
+    {
+      "name": "markets",
+      "description": "Marketplace queries"
+    },
+    {
+      "name": "news",
+      "description": "News queries"
+    },
+    {
+      "name": "news_sources",
+      "description": "News source queries"
+    },
+    {
+      "name": "realtime_access",
+      "description": "Realtime access queries"
+    },
+    {
+      "name": "tick_sizes",
+      "description": "Tick size queries"
+    },
+    {
+      "name": "tradables",
+      "description": "Tradable queries"
+    }
+  ],
+  "host": "api.test.nordnet.se",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "definitions": {
+    "Order": {
+      "properties": {
+        "accno": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The Nordnet account number"
+        },
+        "order_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Nordnet order id"
+        },
+        "price": {
+          "$ref": "#/definitions/Amount",
+          "description": "The price of the order"
+        },
+        "volume": {
+          "type": "number",
+          "format": "double",
+          "description": "The original volume of the order"
+        },
+        "tradable": {
+          "$ref": "#/definitions/TradableId",
+          "description": "Identifier of the tradable"
+        },
+        "open_volume": {
+          "type": "number",
+          "format": "double",
+          "description": "Open volume of an iceberg order"
+        },
+        "traded_volume": {
+          "type": "number",
+          "format": "double",
+          "description": "Total traded volume of the order"
+        },
+        "side": {
+          "type": "string",
+          "description": "BUY or SELL"
+        },
+        "modified": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Last modification time of the order. UNIX time in milliseconds"
+        },
+        "reference": {
+          "type": "string",
+          "description": "User reference on the orders, free text field for the end user"
+        },
+        "activation_condition": {
+          "$ref": "#/definitions/ActivationCondition",
+          "description": "Activation condition for stop loss orders"
+        },
+        "price_condition": {
+          "type": "string",
+          "description": "Price condition on the order: <br>&nbsp;LIMIT - The order is limited by the given price<br>&nbsp;AT_MARKET - The order is entered at the current market price. This is not supported by most markets"
+        },
+        "volume_condition": {
+          "type": "string",
+          "description": "Volume condition on the order<BR>&nbsp;NORMAL - All types of fills are accepted<BR>&nbsp;ALL_OR_NOTHING - Partial fills not accepted"
+        },
+        "validity": {
+          "$ref": "#/definitions/Validity",
+          "description": "The validity period for the order"
+        },
+        "action_state": {
+          "type": "string",
+          "description": "The state of the last action performed on the order.<br>&nbsp;DEL_FAIL - Delete request failed and the order is still active on market<br>&nbsp;DEL_PEND - Delete request in progress and unconfirmed from the market<br>&nbsp;DEL_CONF - Delete confirmed by market<br>&nbsp;DEL_PUSH - Deleted by market<br>&nbsp;INS_FAIL - Insert failed<br>&nbsp;INS_PEND - Pending insert<br>&nbsp;INS_CONF - Confirmed insert<br>&nbsp;INS_STOP - The order inserted into the Nordnet system and stopped. This is the state of inactive orders and not triggered stop loss orders<br>&nbsp;MOD_FAIL - Modification failed and the previous order values are still valid<br>&nbsp;MOD_PEND - Modification in progress and waiting confirmation from market<br>&nbsp;MOD_PUSH - Modified by market<br>&nbsp;INS_WAIT - Insert waiting for market open<br>&nbsp;MOD_WAIT - Modification of order on market waiting for market open<br>&nbsp;DEL_WAIT - Delete of order on market waiting for market open<br>&nbsp;MOD_CONF - Modification confirmed by the market"
+        },
+        "order_type": {
+          "type": "string",
+          "description": "The order type described a standard combinations of parameters, like fill and kill will have a certain validity and volume conditions. These predefined combinations of parameters can also be used for validation of input."
+        },
+        "order_state": {
+          "type": "string",
+          "description": "The state of the order:<br>&nbsp;DELETED - Order is deleted<br>&nbsp;LOCAL - Order is offline/local and eligible for activation<br>&nbsp;ON_MARKET - Order is active on market"
+        }
+      },
+      "required": [
+        "order_state",
+        "order_type",
+        "action_state",
+        "validity",
+        "volume_condition",
+        "price_condition",
+        "modified",
+        "side",
+        "traded_volume",
+        "tradable",
+        "volume",
+        "price",
+        "order_id",
+        "accno"
+      ],
+#   "name": "Order",
+      "description": ""
+    },
+    "Ledger": {
+      "properties": {
+        "currency": {
+          "type": "string",
+          "description": "Currency of the ledger"
+        },
+        "account_sum": {
+          "$ref": "#/definitions/Amount",
+          "description": "The sum in the ledger currency"
+        },
+        "account_sum_acc": {
+          "$ref": "#/definitions/Amount",
+          "description": "The sum in the account currency"
+        },
+        "acc_int_deb": {
+          "$ref": "#/definitions/Amount",
+          "description": "Interest debit in the ledger currency"
+        },
+        "acc_int_cred": {
+          "$ref": "#/definitions/Amount",
+          "description": "Interest credit in the ledger currency"
+        },
+        "exchange_rate": {
+          "$ref": "#/definitions/Amount",
+          "description": "The price to convert to base currency"
+        }
+      },
+      "required": [
+        "exchange_rate",
+        "acc_int_cred",
+        "acc_int_deb",
+        "account_sum_acc",
+        "account_sum",
+        "currency"
+      ],
+#      "name": "Ledger",
+      "description": ""
+    },
+    "Amount": {
+      "properties": {
+        "value": {
+          "type": "number",
+          "format": "double",
+          "description": "The amount value"
+        },
+        "currency": {
+          "type": "string",
+          "description": "The amount currency"
+        }
+      },
+      "required": [
+        "currency",
+        "value"
+      ],
+#      "name": "Amount",
+      "description": "Value/currency combo for amount in a specific currency"
+    },
+    "Instrument": {
+      "properties": {
+        "instrument_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Unique identifier of the instrument. Can in some cases be 0 if the instrument is not tradable"
+        },
+        "tradables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tradable"
+          },
+          "description": "The tradables that belongs to the instrument. If the instrument is not tradable this field is left out"
+        },
+        "currency": {
+          "type": "string",
+          "description": "The currency of the instrument"
+        },
+        "instrument_group_type": {
+          "type": "string",
+          "description": "The instrument group. Wider description than instrument type. The description is available in the instrument type lookup"
+        },
+        "instrument_type": {
+          "type": "string",
+          "description": "The instrument type."
+        },
+        "multiplier": {
+          "type": "number",
+          "format": "double",
+          "description": "The instrument multiplier"
+        },
+        "symbol": {
+          "type": "string",
+          "description": "The instrument symbol. E.g 'ERIC B'"
+        },
+        "isin_code": {
+          "type": "string",
+          "description": "The instrument isin code"
+        },
+        "market_view": {
+          "type": "string",
+          "description": "Marking market view for leverage instruments. U for up and D for down"
+        },
+        "strike_price": {
+          "type": "number",
+          "format": "double",
+          "description": "Strike price if applicable"
+        },
+        "pawn_percentage": {
+          "type": "number",
+          "format": "double",
+          "description": "The pawn percentage if applicable"
+        },
+        "number_of_securities": {
+          "type": "number",
+          "format": "double",
+          "description": "Number of securities, not available for all instruments"
+        },
+        "prospectus_url": {
+          "type": "string",
+          "description": "URL to prospectus if available"
+        },
+        "expiration_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Expiration date if applicable."
+        },
+        "name": {
+          "type": "string",
+          "description": "The instrument name"
+        },
+        "sector": {
+          "type": "string",
+          "description": "The sector id of the instrument"
+        },
+        "sector_group": {
+          "type": "string",
+          "description": "The sector group of the instrument."
+        },
+        "underlyings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UnderlyingInfo"
+          },
+          "description": "A list of underlyings to the instrument"
+        }
+      },
+      "required": [
+        "name",
+        "symbol",
+        "instrument_type",
+        "currency",
+        "instrument_id"
+      ],
+#     "name": "Instrument",
+      "description": "Instrument definition"
+    },
+    "TradableId": {
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "The Nordnet tradable identifier"
+        },
+        "market_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The Nordnet market_id"
+        }
+      },
+      "required": [
+        "market_id",
+        "identifier"
+      ],
+#     "name": "TradableId",
+      "description": ""
+    },
+    "Account": {
+      "properties": {
+        "accno": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The account number of the account to use"
+        },
+        "type": {
+          "type": "string",
+          "description": "Translated account type. Can be displayed for the end user"
+        },
+        "default": {
+          "type": "boolean",
+          "description": "True if this is the default account"
+        },
+        "alias": {
+          "type": "string",
+          "description": "Account alias can be set on Nordnet Web by the end user"
+        },
+        "is_blocked": {
+          "type": "boolean",
+          "description": "True if the account is blocked. No queries can be made to this account"
+        },
+        "blocked_reason": {
+          "type": "string",
+          "description": "Description to why the account is blocked. The language specified in the request is used in this reply so it can be displayed to the end user"
+        }
+      },
+      "required": [
+        "alias",
+        "default",
+        "type",
+        "accno"
+      ],
+#     "name": "Account",
+      "description": ""
+    },
+    "ErrorResponse": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "The error code"
+        },
+        "message": {
+          "type": "string",
+          "description": "A human readable error if available. This message is translated."
+        }
+      },
+      "required": [
+        "code"
+      ],
+#     "name": "ErrorResponse",
+      "description": "Standard error description"
+    },
+    "Tradable": {
+      "properties": {
+        "market_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Market identifier"
+        },
+        "identifier": {
+          "type": "string",
+          "description": "Nordnet tradable identifier. market_id + identifier is unique"
+        },
+        "tick_size_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Tick size identifier"
+        },
+        "lot_size": {
+          "type": "number",
+          "format": "double",
+          "description": "The lot size of the tradable"
+        },
+        "display_order": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Determine the display order of the tradables for an instrument."
+        }
+      },
+      "required": [
+        "display_order",
+        "lot_size",
+        "tick_size_id",
+        "identifier",
+        "market_id"
+      ],
+#     "name": "Tradable",
+      "description": ""
+    },
+    "Trade": {
+      "properties": {
+        "accno": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The Nordnet account number"
+        },
+        "order_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Nordnet order id"
+        },
+        "trade_id": {
+          "type": "string",
+          "description": "Trade id from the market if available"
+        },
+        "tradable": {
+          "$ref": "#/definitions/TradableId",
+          "description": "The tradable identification"
+        },
+        "price": {
+          "$ref": "#/definitions/Amount",
+          "description": "The price of the trade"
+        },
+        "volume": {
+          "type": "number",
+          "format": "double",
+          "description": "The original volume of the order"
+        },
+        "side": {
+          "type": "string",
+          "description": "BUY or SELL"
+        },
+        "counterparty": {
+          "type": "string",
+          "description": "The counterparty if available"
+        },
+        "tradetime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The time of the trade, UNIX time in milliseconds"
+        }
+      },
+      "required": [
+        "tradetime",
+        "side",
+        "volume",
+        "price",
+        "tradable",
+        "order_id",
+        "accno"
+      ],
+#     "name": "Trade",
+      "description": ""
+    },
+    "Validity": {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "DAY, UNTIL_DATE or IMMEDIATE"
+        },
+        "valid_until": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Cancel date, only used when type is UNTIL_DATE"
+        }
+      },
+      "required": [
+        "type"
+      ],
+#     "name": "Validity",
+      "description": ""
+    },
+    "OrderReply": {
+      "properties": {
+        "order_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The nordnet order id"
+        },
+        "result_code": {
+          "type": "string",
+          "description": "OK or error code"
+        },
+        "order_state": {
+          "type": "string",
+          "description": "The order state. Only returned for valid orders."
+        },
+        "action_state": {
+          "type": "string",
+          "description": "The action state"
+        },
+        "message": {
+          "type": "string",
+          "description": "Translated error message if result_code is not OK"
+        }
+      },
+      "required": [
+        "action_state",
+        "result_code",
+        "order_id"
+      ],
+#     "name": "OrderReply",
+      "description": ""
+    },
+    "Position": {
+      "properties": {
+        "accno": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The account number"
+        },
+        "instrument": {
+          "$ref": "#/definitions/Instrument",
+          "description": "Position instrument"
+        },
+        "qty": {
+          "type": "number",
+          "format": "float",
+          "description": "The quantity of the position"
+        },
+        "pawn_percent": {
+          "type": "integer",
+          "format": "int32",
+          "description": "How much can the user loan on this position"
+        },
+        "market_value_acc": {
+          "$ref": "#/definitions/Amount",
+          "description": "Market value in the account currency"
+        },
+        "market_value": {
+          "$ref": "#/definitions/Amount",
+          "description": "Market value in the tradable currency"
+        },
+        "acq_price": {
+          "$ref": "#/definitions/Amount",
+          "description": "Acquisition price in the tradable currency"
+        },
+        "acq_price_acc": {
+          "$ref": "#/definitions/Amount",
+          "description": "Acquisition price in the account currency"
+        },
+        "morning_price": {
+          "$ref": "#/definitions/Amount",
+          "description": "The price of the instrument of the position in the morning"
+        }
+      },
+      "required": [
+        "morning_price",
+        "acq_price_acc",
+        "acq_price",
+        "market_value",
+        "market_value_acc",
+        "pawn_percent",
+        "qty",
+        "instrument",
+        "accno"
+      ],
+#     "name": "Position",
+      "description": ""
+    },
+    "ActivationCondition": {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Stop loss activation condition.<br>&nbsp;NONE - This order has no activiation condition. It is sent directly to the market (if the market is open)<br>&nbsp;MANUAL - The order is inactive in the Nordnet system and is activated by the user<br>&nbsp;STOP_ACTPRICE_PERC - Trailing stop loss. The order is activated when the price changes by percent<br>&nbsp;STOP_ACTPRICE - The order is activated when the market price of the instrument reaches a trigger price"
+        },
+        "trailing_value": {
+          "type": "number",
+          "format": "double",
+          "description": "Only used when type is STOP_ACTPRICE_PERC. This is the fix point that the trigger_value and target_value percent is calculated from"
+        },
+        "trigger_value": {
+          "type": "number",
+          "format": "double",
+          "description": "If type is STOP_ACTPRICE_PERC the value is the given in percent. If type is STOP_ACTPRICE the value is a fixed price"
+        },
+        "trigger_condition": {
+          "type": "string",
+          "description": "The comparision that should be used on trigger_value &lt;= or &gt;|"
+        }
+      },
+      "required": [
+        "type"
+      ],
+#      "name": "ActivationCondition",
+      "description": ""
+    },
+    "LedgerInformation": {
+      "properties": {
+        "total_acc_int_deb": {
+          "$ref": "#/definitions/Amount",
+          "description": "Total interest debit in the account currency"
+        },
+        "total_acc_int_cred": {
+          "$ref": "#/definitions/Amount",
+          "description": "Total interest credit in the account currency"
+        },
+        "total": {
+          "$ref": "#/definitions/Amount",
+          "description": "Total of all the ledgers in the account currency"
+        },
+        "ledgers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Ledger"
+          },
+          "description": "Each ledger"
+        }
+      },
+      "required": [
+        "ledgers",
+        "total",
+        "total_acc_int_cred",
+        "total_acc_int_deb"
+      ],
+#      "name": "LedgerInformation",
+      "description": ""
+    },
+    "UnderlyingInfo": {
+      "properties": {
+        "instrument_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Unique identifier of the underlying instrument instrument"
+        },
+        "symbol": {
+          "type": "string",
+          "description": "The symbol of the underlying instrument"
+        },
+        "isin_code": {
+          "type": "string",
+          "description": "The isin code of the underlying instrument"
+        }
+      },
+      "required": [
+        "isin_code",
+        "symbol",
+        "instrument_id"
+      ],
+#      "name": "UnderlyingInfo",
+      "description": ""
+    },
+    "AccountInfo": {
+      "properties": {
+        "account_currency": {
+          "type": "string",
+          "description": "The account currency"
+        },
+        "account_credit": {
+          "$ref": "#/definitions/Amount",
+          "description": "Account credit"
+        },
+        "account_sum": {
+          "$ref": "#/definitions/Amount",
+          "description": "All ledgers combined"
+        },
+        "collateral": {
+          "$ref": "#/definitions/Amount",
+          "description": "Collateral claim for options"
+        },
+        "credit_account_sum": {
+          "$ref": "#/definitions/Amount",
+          "description": "Sum for credit account if available"
+        },
+        "forward_sum": {
+          "$ref": "#/definitions/Amount",
+          "description": "Locked amount for forwards"
+        },
+        "future_sum": {
+          "$ref": "#/definitions/Amount",
+          "description": "Not realized profit/loss for future"
+        },
+        "unrealized_future_profit_loss": {
+          "$ref": "#/definitions/Amount",
+          "description": "Unrealized profit and loss for futures"
+        },
+        "full_marketvalue": {
+          "$ref": "#/definitions/Amount",
+          "description": "Total market value"
+        },
+        "interest": {
+          "$ref": "#/definitions/Amount",
+          "description": "Interest on the account"
+        },
+        "intraday_credit": {
+          "$ref": "#/definitions/Amount",
+          "description": "Intraday credit if available"
+        },
+        "loan_limit": {
+          "$ref": "#/definitions/Amount",
+          "description": "Max loan limit (regardless of pawnvalue)"
+        },
+        "own_capital": {
+          "$ref": "#/definitions/Amount",
+          "description": "account_sum + full_marketvalue + interest + forward_sum + future_sum + unrealized_future_profit_loss"
+        },
+        "own_capital_morning": {
+          "$ref": "#/definitions/Amount",
+          "description": "Own capital calculated in the morning. Static during the day"
+        },
+        "pawn_value": {
+          "$ref": "#/definitions/Amount",
+          "description": "Pawn value of all positions combined"
+        },
+        "trading_power": {
+          "$ref": "#/definitions/Amount",
+          "description": "Available for trading"
+        }
+      },
+      "required": [
+        "trading_power",
+        "pawn_value",
+        "own_capital_morning",
+        "own_capital",
+        "loan_limit",
+        "interest",
+        "full_marketvalue",
+        "unrealized_future_profit_loss",
+        "future_sum",
+        "forward_sum",
+        "collateral",
+        "account_sum",
+        "account_credit",
+        "account_currency"
+      ],
+#     "name": "AccountInfo",
+      "description": ""
+    },
+    "Country": {
+      "properties": {
+        "country": {
+          "type": "string",
+          "description": "The country code"
+        },
+        "name": {
+          "type": "string",
+          "description": "The translated name of the country"
+        }
+      },
+      "required": [
+        "name",
+        "country"
+      ],
+#      "name": "Country",
+      "description": ""
+    },
+    "Indicator": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Translated name of the indicator"
+        },
+        "src": {
+          "type": "string",
+          "description": "Indicator source"
+        },
+        "identifier": {
+          "type": "string",
+          "description": "Identifier. source + identifier is unique"
+        },
+        "delayed": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The indicator prices is delayed in this many seconds. Defaults to 0. Should be ignored if only_eod is true"
+        },
+        "only_eod": {
+          "type": "boolean",
+          "description": "If true the price is only displayed end-of-day. Defaults to false"
+        },
+        "open": {
+          "type": "string",
+          "description": "The opening time on the format \"HH:MM:SS\" in UTC if available"
+        },
+        "close": {
+          "type": "string",
+          "description": "The closing time  on the format \"HH:MM:SS\" in UTC if available"
+        },
+        "country": {
+          "type": "string",
+          "description": "The country of the indicator if available"
+        },
+        "type": {
+          "type": "string",
+          "description": "COMMODITY, CURRENCY, INTEREST or INDEX"
+        },
+        "region": {
+          "type": "string",
+          "description": "The region of the indicator if available. Country and region can't be set at the same time"
+        },
+        "instrument_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Connect the indicator to an instrument. NOTE! Most indicators don't have a real instrument"
+        }
+      },
+      "required": [
+        "type",
+        "identifier",
+        "src",
+        "name"
+      ],
+#      "name": "Indicator",
+      "description": ""
+    },
+    "Sector": {
+      "properties": {
+        "sector": {
+          "type": "string",
+          "description": "The unique sector id"
+        },
+        "group": {
+          "type": "string",
+          "description": "The sector group for this sector"
+        },
+        "name": {
+          "type": "string",
+          "description": "Translated name of the sector"
+        }
+      },
+      "required": [
+        "name",
+        "sector"
+      ],
+#      "name": "Sector",
+      "description": ""
+    },
+    "OptionPairFilter": {
+      "properties": {
+        "expiration_dates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of valid expiry dates"
+        }
+      },
+      "required": [
+        "expiration_dates"
+      ],
+#      "name": "OptionPairFilter",
+      "description": ""
+    },
+    "OptionPair": {
+      "properties": {
+        "strike_price": {
+          "type": "number",
+          "format": "double",
+          "description": "The strike price for this option pair"
+        },
+        "expiration_date": {
+          "type": "string",
+          "format": "date",
+          "description": "The expiration date for this option pair"
+        },
+        "call": {
+          "$ref": "#/definitions/Instrument",
+          "description": "The call option"
+        },
+        "put": {
+          "$ref": "#/definitions/Instrument",
+          "description": "The put option"
+        }
+      },
+      "required": [
+        "put",
+        "call",
+        "expiration_date",
+        "strike_price"
+      ],
+#      "name": "OptionPair",
+      "description": ""
+    },
+    "Issuer": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the issuer"
+        },
+        "issuer_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Unique id of the issuer"
+        }
+      },
+      "required": [
+        "issuer_id",
+        "name"
+      ],
+#      "name": "Issuer",
+      "description": ""
+    },
+    "InstrumentType": {
+      "properties": {
+        "instrument_type": {
+          "type": "string",
+          "description": "The instrument type code"
+        },
+        "name": {
+          "type": "string",
+          "description": "The translated name of the instrument"
+        }
+      },
+      "required": [
+        "name",
+        "instrument_type"
+      ],
+#      "name": "InstrumentType",
+      "description": ""
+    },
+    "LeverageFilter": {
+      "properties": {
+        "issuers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Issuer"
+          },
+          "description": "List of valid issuer_id and issuer_name"
+        },
+        "market_view": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of valid market views"
+        },
+        "expiration_dates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of valid expiry dates"
+        },
+        "instrument_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of valid instrument types"
+        },
+        "instrument_group_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of valid instrument group types"
+        },
+        "currencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of valid currencies"
+        },
+        "no_of_instruments": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number of derivatives if this filter is used"
+        }
+      },
+      "required": [
+        "no_of_instruments",
+        "currencies",
+        "instrument_group_types",
+        "instrument_types",
+        "expiration_dates",
+        "market_view",
+        "issuers"
+      ],
+#      "name": "LeverageFilter",
+      "description": ""
+    },
+    "List": {
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "The short name of the symbol."
+        },
+        "display_order": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Used for sorting the list before displaying them to the end user."
+        },
+        "list_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Unique id for the list"
+        },
+        "name": {
+          "type": "string",
+          "description": "The translated name of the list."
+        },
+        "country": {
+          "type": "string",
+          "description": "The country of the list if available."
+        },
+        "region": {
+          "type": "string",
+          "description": "The region of the list if available."
+        }
+      },
+      "required": [
+        "name",
+        "list_id",
+        "display_order",
+        "symbol"
+      ],
+#     "name": "List",
+      "description": ""
+    },
+    "LoggedInStatus": {
+      "properties": {
+        "logged_in": {
+          "type": "boolean",
+          "description": "True if the session is valid"
+        }
+      },
+      "required": [
+        "logged_in"
+      ],
+#     "name": "LoggedInStatus",
+      "description": ""
+    },
+    "Feed": {
+      "properties": {
+        "hostname": {
+          "type": "string",
+          "description": "The feed hostname"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The feed port"
+        },
+        "encrypted": {
+          "type": "boolean",
+          "description": "True if the feed is encrypted. This value is always true"
+        }
+      },
+      "required": [
+        "encrypted",
+        "port",
+        "hostname"
+      ],
+#      "name": "Feed",
+      "description": ""
+    },
+    "Login": {
+      "properties": {
+        "environment": {
+          "type": "string",
+          "description": "The environment of the server. Examples: production, test"
+        },
+        "session_key": {
+          "type": "string",
+          "description": "The session key used for identification in all other requests"
+        },
+        "expires_in": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The session expire interval in seconds. Note: this is not the remaining time until session timeout it is the interval"
+        },
+        "private_feed": {
+          "$ref": "#/definitions/Feed",
+          "description": "Connection information for the private feed"
+        },
+        "public_feed": {
+          "$ref": "#/definitions/Feed",
+          "description": "Connection information for the public feed"
+        }
+      },
+      "required": [
+        "public_feed",
+        "private_feed",
+        "expires_in",
+        "session_key",
+        "environment"
+      ],
+#      "name": "Login",
+      "description": ""
+    },
+    "Market": {
+      "properties": {
+        "market_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The Nordnet unique identifier of the market."
+        },
+        "country": {
+          "type": "string",
+          "description": "The country code, available for all non virtual markets"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the market"
+        }
+      },
+      "required": [
+        "name",
+        "market_id"
+      ],
+#      "name": "Market",
+      "description": ""
+    },
+    "NewsPreview": {
+      "properties": {
+        "news_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Unique news id"
+        },
+        "source_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The Nordnet unique id of the news source"
+        },
+        "headline": {
+          "type": "string",
+          "description": "The news headline"
+        },
+        "instruments": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "List of instrument_ids affected by the news item. Note: this information does not come from all news sources"
+        },
+        "lang": {
+          "type": "string",
+          "description": "The news language. Note: this information does not come from all news sources."
+        },
+        "type": {
+          "type": "string",
+          "description": "The news type"
+        },
+        "timestamp": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The timestamp for the news item. UNIX timestamp in milliseconds"
+        }
+      },
+      "required": [
+        "timestamp",
+        "type",
+        "headline",
+        "source_id",
+        "news_id"
+      ],
+#      "name": "NewsPreview",
+      "description": ""
+    },
+    "NewsItem": {
+      "properties": {
+        "news_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Unique news id"
+        },
+        "source_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The Nordnet unique id of the news source"
+        },
+        "headline": {
+          "type": "string",
+          "description": "The news headline"
+        },
+        "body": {
+          "type": "string",
+          "description": "The news body"
+        },
+        "instruments": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "List of instrument_ids affected by the news item. Note: this information does not come from all news sources"
+        },
+        "lang": {
+          "type": "string",
+          "description": "The news language. Note: this information does not come from all news sources."
+        },
+        "type": {
+          "type": "string",
+          "description": "The news type"
+        },
+        "timestamp": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The timestamp for the news item. UNIX timestamp in milliseconds"
+        }
+      },
+      "required": [
+        "timestamp",
+        "type",
+        "body",
+        "headline",
+        "source_id",
+        "news_id"
+      ],
+#      "name": "NewsItem",
+      "description": ""
+    },
+    "NewsSource": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the news source"
+        },
+        "source_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The Nordnet unique id of the news source"
+        },
+        "level": {
+          "type": "string",
+          "description": "The accesslevel for the news source:<br>&nbsp;DELAYED - The user can see the news with a 15 minute delay<br>&nbsp;REALTIME - The user can see the news in realtime<br>&nbsp;FLASH - The user can see FLASH news (FLASH also implies realtime for ordinary news)"
+        },
+        "countries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of country codes that the news source affect"
+        }
+      },
+      "required": [
+        "level",
+        "source_id",
+        "name"
+      ],
+#      "name": "NewsSource",
+      "description": ""
+    },
+    "RealtimeAccess": {
+      "properties": {
+        "market_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Nordnet market_id"
+        },
+        "level": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Level 0 - No access, 1 - price access, 2 - order depth"
+        }
+      },
+      "required": [
+        "level",
+        "market_id"
+      ],
+#      "name": "RealtimeAccess",
+      "description": ""
+    },
+    "Status": {
+      "properties": {
+        "timestamp": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Server timestamp. UNIX timestamp in milliseconds"
+        },
+        "valid_version": {
+          "type": "boolean",
+          "description": "True if the API version is a valid version"
+        },
+        "system_running": {
+          "type": "boolean",
+          "description": "Indicates if the system is running or temporarily stopped"
+        },
+        "message": {
+          "type": "string",
+          "description": "Additional info. Usually empty"
+        }
+      },
+      "required": [
+        "message",
+        "system_running",
+        "valid_version",
+        "timestamp"
+      ],
+#      "name": "Status",
+      "description": ""
+    },
+    "TicksizeTable": {
+      "properties": {
+        "tick_size_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Unique id for the ticksize table"
+        },
+        "ticks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TicksizeInterval"
+          },
+          "description": "The ticksize interval table"
+        }
+      },
+      "required": [
+        "ticks",
+        "tick_size_id"
+      ],
+#      "name": "TicksizeTable",
+      "description": ""
+    },
+    "TicksizeInterval": {
+      "properties": {
+        "decimals": {
+          "type": "integer",
+          "format": "int64",
+          "description": "No of decimals used in this interval"
+        },
+        "from_price": {
+          "type": "number",
+          "format": "double",
+          "description": "The interval is valid from this price"
+        },
+        "to_price": {
+          "type": "number",
+          "format": "double",
+          "description": "The internval is valid to this price"
+        },
+        "tick": {
+          "type": "number",
+          "format": "double",
+          "description": "The ticksize"
+        }
+      },
+      "required": [
+        "tick",
+        "to_price",
+        "from_price",
+        "decimals"
+      ],
+#      "name": "TicksizeInterval",
+      "description": ""
+    },
+    "PublicTrades": {
+      "properties": {
+        "market_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The Nordnet unique identifier of market"
+        },
+        "identifier": {
+          "type": "string",
+          "description": "The tradable identifier. Market_id + identifier is unique"
+        },
+        "trades": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicTrade"
+          },
+          "description": "A list of the public trades"
+        }
+      },
+      "required": [
+        "trades",
+        "identifier",
+        "market_id"
+      ],
+#      "name": "PublicTrades",
+      "description": ""
+    },
+    "PublicTrade": {
+      "properties": {
+        "broker_buying": {
+          "type": "string",
+          "description": "Buying participate"
+        },
+        "broker_selling": {
+          "type": "string",
+          "description": "Selling participate"
+        },
+        "volume": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The volume of the trade"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "description": "The price of the trade"
+        },
+        "trade_id": {
+          "type": "string",
+          "description": "The trade id on the exchange"
+        },
+        "trade_type": {
+          "type": "string",
+          "description": "The trade type defined by the exchange."
+        }
+      },
+      "required": [
+        "trade_id",
+        "price",
+        "volume"
+      ],
+#      "name": "PublicTrade",
+      "description": ""
+    },
+    "OrderType": {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The order type code"
+        },
+        "name": {
+          "type": "string",
+          "description": "The translated order type"
+        }
+      },
+      "required": [
+        "name",
+        "type"
+      ],
+#      "name": "OrderType",
+      "description": ""
+    },
+    "IntradayGraph": {
+      "properties": {
+        "market_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Unique market id"
+        },
+        "identifier": {
+          "type": "string",
+          "description": "The tradable identifier. Market_id + identifier is unique"
+        },
+        "ticks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IntradayTick"
+          },
+          "description": "A list of price ticks"
+        }
+      },
+      "required": [
+        "ticks",
+        "identifier",
+        "market_id"
+      ],
+#      "name": "IntradayGraph",
+      "description": ""
+    },
+    "CalendarDay": {
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "The date on the format YYYY-MM-DD"
+        },
+        "open": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The open time in UNIX timestamp (UTC) in milliseconds"
+        },
+        "close": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The close time in UNIX timestamp (UTC) in milliseconds"
+        }
+      },
+      "required": [
+        "close",
+        "open",
+        "date"
+      ],
+#     "name": "CalendarDay",
+      "description": ""
+    },
+    "IntradayTick": {
+      "properties": {
+        "timestamp": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The timestamp in UTC"
+        },
+        "last": {
+          "type": "number",
+          "format": "double",
+          "description": "Last price during this minute"
+        },
+        "low": {
+          "type": "number",
+          "format": "double",
+          "description": "Lowest price during this minute"
+        },
+        "high": {
+          "type": "number",
+          "format": "double",
+          "description": "Highest price during this minute"
+        },
+        "volume": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Traded volume during this minute"
+        },
+        "no_of_trades": {
+          "type": "integer",
+          "format": "int32",
+          "description": "No of trades during this minute"
+        }
+      },
+      "required": [
+        "no_of_trades",
+        "volume",
+        "high",
+        "low",
+        "last",
+        "timestamp"
+      ],
+#      "name": "IntradayTick",
+      "description": ""
+    },
+    "TradableInfo": {
+      "properties": {
+        "market_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The Nordnet unique identifier of market"
+        },
+        "identifier": {
+          "type": "string",
+          "description": "Identifier of the tradable. identifier + market_id is unique,"
+        },
+        "iceberg": {
+          "type": "boolean",
+          "description": "True if iceberg orders is allowed"
+        },
+        "calendar": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CalendarDay"
+          },
+          "description": "Allowed days for long term orders"
+        },
+        "order_types": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderType"
+          },
+          "description": "Allowed order types"
+        }
+      },
+      "required": [
+        "order_types",
+        "calendar",
+        "iceberg",
+        "identifier",
+        "market_id"
+      ],
+#      "name": "TradableInfo",
+      "description": ""
+    }
+  }
+}
+
+
